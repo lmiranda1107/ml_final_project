@@ -1,106 +1,127 @@
-import os
+# # Dependencies
+# from numpy import genfromtxt
+# from time import time
+# from datetime import datetime
+# from sqlalchemy import Column, Integer, Float, Date, String, ForeignKey
+# from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy import create_engine
+# from sqlalchemy.orm import sessionmaker
+# from sqlalchemy.orm import Session
+# from sqlalchemy import Index
+# from sqlalchemy import MetaData
+# from sqlalchemy import Table
+# import csv
+# import pandas as pd
+# from sqlalchemy.ext.automap import automap_base
+# from sqlalchemy import create_engine, inspect
+# from sqlalchemy import func
 
-# Dependencies
-from numpy import genfromtxt
-from time import time
-from datetime import datetime
-from sqlalchemy import Column, Integer, Float, Date, String, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm import Session
-from sqlalchemy import Index
-from sqlalchemy import MetaData
-from sqlalchemy import Table
-import csv
-import pandas as pd
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy import create_engine, inspect
-from sqlalchemy import func
+# import necessary libraries
+import os
+from flask import (
+    Flask,
+    render_template,
+    jsonify,
+    request,
+    redirect,
+    url_for)
+
+from sklearn.externals import joblib
+
 
 #################################################
 # Flask Setup
 #################################################
 app = Flask(
     __name__, 
-    template_folder='templates/light-bootstrap-dashboard-master',
-    static_url_path='/assets',
-    static_folder='templates/light-bootstrap-dashboard-master/static'
+    template_folder='templates',
+    static_url_path='/static',
 )
+model = None 
 
 #################################################
 # Database Setup
 #################################################
+from flask_sqlalchemy import SQLAlchemy
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///organ_transplant.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/BC_diagnosis.db"
 # Create DB object to pass Flask app to it - SQLAlchemy object that can be used in Flask
 db = SQLAlchemy(app)
 
-#Create database model (emoji exercise 15.3.3)
-#Create a class that defines what the table is and what columns are on the table
-class Organ_data(db.Model):
-    __tablename__ = 'organ_data' ecrce
-    #Define the Columns
-    id = db.Column('id', db.Integer, primary_key=True) #takes in 3 arguments SQLAlchemy requires a primary key - https://www.youtube.com/watch?v=Tu4vRU4lt6k
-    organ_transplantation_type = db.Column(db.String(64))
-    organ_procurement_organization_name = db.Column(db.String(64))
-    organ_procurement_organization_city = db.Column(db.String(64))
-    county = db.Column(db.String(64))
-    state = db.Column(db.String(64))
-    state_abbreviation = db.Column(db.String(64))
-    data_warehouse_record_create_date_text = db.Column(db.String(64))
-    geocoding__primary_x_coordinate = db.Column(db.Float)
-    geocoding_primary_y_coordinate = db.Column(db.Float)
-   
-    def __repr__(self):
-        return '<Organ_data %r>' % (self.name)
+#Create route that renders index.html template
+@app.route("/", methods = ['GET'])
+def index():
+    active_tab = "index"
+    return render_template("index.html", active = active_tab)
 
-#Create route that renders dashboard.html template
-@app.route("/")
-def home():
-    active_tab = "dashboard"
-    return render_template("dashboard.html", active = active_tab)
+# Query the database and send the jsonified results
 
-@app.route("/etl")
-def etl():
-    active_tab = "etl"
-    return render_template("user.html", active = active_tab )
+@app.route('/start-over')
+def startover():
+	return redirect("/", code=302)
 
 
-@app.route("/table")
-def table():
-    active_tab = "table"
-    return render_template("table.html", active = active_tab )
+@app.route('/get-patient-data', methods=['POST'])
+def make_predict():
+    global model
+    global radius_mean, perimeter_mean, area_mean, concavity_mean
+    global concave_points_mean, radius_worst, perimeter_worst 
+    global area_worst, concavity_worst, concave_points_worst
 
-@app.route("/map")
-def map():
-    active_tab = "maps"
-    return render_template("maps.html",  active = active_tab)
+    if request.method == 'POST':
+        model = joblib.load('predict_cancer_type.pkl')
 
-@app.route("/chartdata", methods=['POST'])
-def chartdata():
-    print("pepee")
+        print('-----line 27--------')
+        print(request.form.get('radius_mean'))
+        #if radius_mean is not None:
+        radius_mean = float(request.form.get('radius_mean'))
+        #print(radius_mean)
 
-
-# create route that returns data for plotting
-@app.route("/Top_organs_chart")
-def top_organs_chart():
-   # this will return the top 5 organs based on most transplants done
-    results = db.session.query(Organ_data.organ_transplantation_type, func.count(Organ_data.organ_transplantation_type)).group_by(Organ_data.organ_transplantation_type).all()
-#   results = db.session.query(Organ_data.organ_transplantation_type, Organ_data.count(Organ_data.type)).group_by(Organ_data.type).limit(5).all()
+        #if perimeter_mean is not None:
+        perimeter_mean = float(request.form.get('perimeter_mean'))
+        #if area_mean is not None:
+        area_mean  = float(request.form.get('area_mean'))
+        #if concavity_mean is not None:
+        concavity_mean  = float(request.form.get('concavity_mean'))
+        #if concave_points_mean is not None:
+        concave_points_mean = float(request.form.get('concave_points_mean'))
+        #if radius_worst is not None:
+        radius_worst  = float(request.form.get('radius_worst'))
+        #if perimeter_worst is not None:
+        perimeter_worst  = float(request.form.get('perimeter_worst'))
+        #if area_worst is not None:
+        area_worst  = float(request.form.get('area_worst'))
+        #if concavity_worst is not None:
+        concavity_worst  = float(request.form.get('concavity_worst'))
+        #if concave_points_worst is not None:
+        concave_points_worst  = float(request.form.get('concave_points_worst'))
+        
+        diagnosis_features= [
+        radius_mean, #radius_mean                                 
+		perimeter_mean, #perimeter_mean                                      
+		area_mean, #area_mean 
+		concavity_mean, #concavity_mean 
+        concave_points_mean, #concave points_mean 
+        radius_worst, #radius_worst 
+        perimeter_worst , #perimeter_worst
+        area_worst , #area_worst 
+        concavity_worst, #concavity_worst 
+        concave_points_worst, #concave points_worst                                   
+        ]
+        #diagnosis_features= [diagnosis_features]
+        diagnosis = model.predict([diagnosis_features])
+            
+        print(diagnosis)
     
-    organ_type = [result[0] for result in results]
-    id = [result[1] for result in results]
+        if diagnosis==0:
+            cancer = 'Benign'
 
-    trace = {
-        "x": organ_type,
-        "y": id,
-        "type": "bar"
-    }
+        elif diagnosis==1:
+            cancer = 'Malignant'
+        print("The breast cancer of this patient should be: %s" % (cancer,) )
 
-    return jsonify(trace)
+        return render_template('model.html', diagnosis = cancer )
 
 
-if __name__ == "__main__":
-    app.run()
-
+if __name__ == '__main__':
+	app.run(debug=True)
