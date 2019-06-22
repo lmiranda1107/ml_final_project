@@ -1,22 +1,4 @@
 # # Dependencies
-# from numpy import genfromtxt
-# from time import time
-# from datetime import datetime
-# from sqlalchemy import Column, Integer, Float, Date, String, ForeignKey
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import sessionmaker
-# from sqlalchemy.orm import Session
-# from sqlalchemy import Index
-# from sqlalchemy import MetaData
-# from sqlalchemy import Table
-# import csv
-# import pandas as pd
-# from sqlalchemy.ext.automap import automap_base
-# from sqlalchemy import create_engine, inspect
-# from sqlalchemy import func
-
-# import necessary libraries
 import os
 from flask import (
     Flask,
@@ -27,7 +9,6 @@ from flask import (
     url_for)
 
 from sklearn.externals import joblib
-
 
 #################################################
 # Flask Setup
@@ -44,10 +25,9 @@ model = None
 #################################################
 from flask_sqlalchemy import SQLAlchemy
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/BC_diagnosis.db"
+#app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/BC_diagnosis.db"
 # Create DB object to pass Flask app to it - SQLAlchemy object that can be used in Flask
-db = SQLAlchemy(app)
-
+#db = SQLAlchemy(app)
 #Create route that renders index.html template
 @app.route("/", methods = ['GET'])
 def index():
@@ -55,7 +35,6 @@ def index():
     return render_template("index.html", active = active_tab)
 
 # Query the database and send the jsonified results
-
 @app.route('/start-over')
 def startover():
 	return redirect("/", code=302)
