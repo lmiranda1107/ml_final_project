@@ -48,7 +48,7 @@ def make_predict():
     global area_worst, concavity_worst, concave_points_worst
 
     if request.method == 'POST':
-        model = joblib.load('predict_cancer_type.pkl')
+        model = joblib.load('predict_cancer.pkl')
 
         print('-----line 27--------')
         print(request.form.get('radius_mean'))
@@ -97,9 +97,9 @@ def make_predict():
 
         elif diagnosis==1:
             cancer = 'Malignant'
-        print("The breast cancer of this patient should be: %s" % (cancer,) )
+        print("The breast cancer of this patient is likely to be: %s" % (cancer,) )
 
-        return render_template('model.html', diagnosis = cancer )
+        return render_template('index.html', diagnosis = cancer )
 
 
 if __name__ == '__main__':

@@ -1,6 +1,104 @@
 <!DOCTYPE html>
-<head>
-    <title>Im running</title>
-</head>
+<html>
+    <head>
+        <title>Predict Breast Cancer | Prediction</title>
+        <meta name = "description" content="This is the description"> <!-- shows inside google browser results-->
+        <link rel = "stylesheet" href = "/static/css/styles.css"/>
+    </head>
+    <body>
+        <!-- Nav and header dont apply any styling-->
+    <header>
+<!-- Used class "nav" for css styling purposes due to issue with margin -->
+        <nav> <!--nav and main-nav are separate classes> -->
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+            </ul>
+        </nav>
+            <h1>Predict Breast Cancer</h1>
+            
+    </header>
+    
+    <section> <!-- section element similar to header but not specific to a type, it's just some form of section-->
+        <form action="/start-over" method="GET">
+            <input type="submit" value="Reset"> 
+        </form>
+        
+        <form action="/get-patient-data" method="POST">
 
+            <div>
+                <button role="button">info</button>
+                <span>Radius (Mean)</span>
+                <input type="float" name = "radius_mean">
+                <button role="button">Clear</button>
+            </div>
+            <div>
+                <button role="button">info</button>
+                <span>Perimeter (Mean)</span>
+                <input type="float" name ="perimeter_mean">
+                <button role="button">Clear</button>
+            </div>
+            <div>
+                <button role="button">info</button>
+                <span>Area (Mean)</span>
+                <input type="float" name="area_mean">
+                <button role="button">Clear</button>
+            </div>
+            <div>
+                <button role="button">info</button>            
+                <span>Concavity (Mean)</span>
+                <input type="float" name="concavity_mean">
+                <button role="button">Clear</button>
+            </div>
+            <div>
+                <button role="button">info</button>            
+                <span>Concave Points (Mean)</span>
+                <input type="float" name="concave_points_mean">
+                <button role="button">Clear</button>
+            </div>
+            <div>
+                <button role="button">info</button>
+                <span>Radius (Worst)</span>
+                <input type="float" name="radius_worst">
+                <button role="button">Clear</button>
+            </div>
+            <div>
+                <button role="button">info</button>
+                <span>Perimeter (Worst)</span>
+                <input type="float" name="perimeter_worst">
+                <button role="button">Clear</button>
+            </div>
+            <div>
+                <button role="button">info</button>
+                <span>Area (Worst)</span>
+                <input type="float" name="area_worst">
+                <button role="button">Clear</button>
+            </div>     
+            <div>
+                <button role="button">info</button>
+                <span>Concavity (Worst)</span>
+                <input type="float" name="concavity_worst">
+                <button role="button">Clear</button>
+            </div>
+            <div>
+                <button role="button">info</button>
+                <span>Concave Points (Worst)</span>
+                <input type="float" name="concave_points_worst">
+                <button role="button">Clear</button>
+            </div>     
+            <input type="submit" value="Predict Cancer Type">
+        </form>
+
+        {% if diagnosis: %}
+            <p>The patient's breast cancer type is likely to be :</p>
+            <h3> {{diagnosis}} </h3> 
+        {% endif %}
+    </section>
+
+    <footer> 
+            <div>
+                <h3>Predictions</h3>    
+            </div>
+    </footer>
+    </body>
 </html>
