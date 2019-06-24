@@ -48,7 +48,7 @@ def make_predict():
     global area_worst, concavity_worst, concave_points_worst
 
     if request.method == 'POST':
-        model = joblib.load('predict_cancer.pkl')
+        model = joblib.load('Resources/predict_cancer.pkl')
 
         print('-----line 27--------')
         print(request.form.get('radius_mean'))
