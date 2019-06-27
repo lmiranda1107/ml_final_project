@@ -1,0 +1,16 @@
+.main-container{
+    padding-top: 50px;
+}
+
+.index-intro{
+    width: 100%;
+    background-color: #f3f3f3
+}
+
+
+.index-intro .jumbotron{
+    padding:0px;
+    background-color: red
+}
+
+

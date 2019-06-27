@@ -15,8 +15,9 @@ from sklearn.externals import joblib
 #################################################
 app = Flask(
     __name__, 
-    template_folder='templates',
-    static_url_path='/static',
+    template_folder='templates/ml_views',
+    static_url_path='/ml_views/static',
+    static_folder='templates/ml_views/static'
 )
 model = None 
 
@@ -25,9 +26,6 @@ model = None
 #################################################
 from flask_sqlalchemy import SQLAlchemy
 
-#app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/BC_diagnosis.db"
-# Create DB object to pass Flask app to it - SQLAlchemy object that can be used in Flask
-#db = SQLAlchemy(app)
 #Create route that renders index.html template
 @app.route("/", methods = ['GET'])
 def index():
@@ -48,7 +46,7 @@ def make_predict():
     global area_worst, concavity_worst, concave_points_worst
 
     if request.method == 'POST':
-        model = joblib.load('predict_cancer.pkl')
+        model = joblib.load('Resources/predict_cancer.pkl')
 
         print('-----line 27--------')
         print(request.form.get('radius_mean'))
