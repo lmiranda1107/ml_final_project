@@ -25,6 +25,7 @@
         }
         .m-t-40 {
             margin-top: 40px;
+            color: white;
         }
     </style>
     
@@ -64,73 +65,62 @@
                     <form class="form-inline" action="/get-patient-data" method="POST">
                         <div class="form-row align-items-center">
                             <div class="form-group col-md-6">
-                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Some shit" data-content="Pepe billete"><span class="fa fa-info"></span></button>
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Radius (Mean)" data-content="Mean of distances from center to points on the perimeter"><span class="fa fa-info"></span></button>
                                 <label class="col-sm-4">Radius (Mean)</label>
                                 <input type="float" class="form-control col-sm-4" name = "radius_mean">
-                                <!-- <button type="button" class="btn btn-outline-info btn-sm">Clear</button> -->
                             </div>
                             <div class="form-group col-md-6">
                                 <div class="input-group input-group-sm mb-3">
-                                    <button type="button" class="btn btn-primary btn-sm circle-button"><span class="fa fa-info"></span></button>
+                                    <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Perimeter (Mean)" data-content="Measurement of the boundary that surrounds the tumor."><span class="fa fa-info"></span></button>
                                 </div>
                                 <span class="col-sm-4">Perimeter (Mean)</span>
                                 <input type="float" class="form-control col-sm-4" name ="perimeter_mean">
-                                <!-- <button type="button" class="btn btn-outline-info btn-sm">Clear</button> -->
                             </div>
                             <div class="form-group col-md-6">
-                                <button type="button" class="btn btn-primary btn-sm circle-button"><span class="fa fa-info"></span></button>
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Area (Mean)" data-content="Extent or measurement of the surface of the tumor"><span class="fa fa-info"></span></button>
                                 <span class="col-sm-4">Area (Mean)</span>
                                 <input type="float" class="form-control col-sm-4" name="area_mean">
-                                <!-- <button type="button" class="btn btn-outline-info">Clear</button> -->
                             </div>
                             <div class="form-group col-md-6">
-                                <button type="button" class="btn btn-primary btn-sm circle-button"><span class="fa fa-info"></span></button>   
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Concavity (Mean)" data-content="Severity of concave portions of the contour."><span class="fa fa-info"></span></button>   
                                 <span class="col-sm-4">Concavity (Mean)</span>
                                 <input type="float" class="form-control col-sm-4" name="concavity_mean">
-                                <!-- <button type="button" class="btn btn-outline-info">Clear</button> -->
                             </div>
                             <div class="form-group col-md-6">
-                                <button type="button" class="btn btn-primary btn-sm circle-button"><span class="fa fa-info"></span></button>
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Concave Points (Mean)" data-content="Number of concave portions of the contour."><span class="fa fa-info"></span></button>
                                 <span class="col-sm-4">Concave Points (Mean)</span>
                                 <input type="float" class="form-control col-sm-4" name="concave_points_mean">
-                                <!-- <button type="button" class="btn btn-outline-info">Clear</button> -->
                             </div>
                             <div class="form-group col-md-6">
-                                <button type="button" class="btn btn-primary btn-sm circle-button"><span class="fa fa-info"></span></button>
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Radius (Worst)" data-content="'Worst' or largest (mean of the three largest values) - Mean of distances from center to points on the perimeter"><span class="fa fa-info"></span></button>
                                 <span class="col-sm-4">Radius (Worst)</span>
                                 <input type="float" class="form-control col-sm-4" name="radius_worst">
-                                <!-- <button type="button" class="btn btn-outline-info">Clear</button> -->
                             </div>
                             <div class="form-group col-md-6">
-                                <button type="button" class="btn btn-primary btn-sm circle-button"><span class="fa fa-info"></span></button>
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Perimeter (Worst)" data-content="'Worst' or largest (mean of the three largest values) - Measurement of the boundary that surrounds the tumor"><span class="fa fa-info"></span></button>
                                 <span class="col-sm-4">Perimeter (Worst)</span>
                                 <input type="float" class="form-control col-sm-4" name="perimeter_worst">
-                                <!-- <button type="button" class="btn btn-outline-info">Clear</button> -->
                             </div>
                             <div class="form-group col-md-6">
-                                <button type="button" class="btn btn-primary btn-sm circle-button"><span class="fa fa-info"></span></button>
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Area (Worst)" data-content="'Worst' or largest (mean of the three largest values) - Extent or measurement of the surface of the tumor"><span class="fa fa-info"></span></button>
                                 <span class="col-sm-4">Area (Worst)</span>
                                 <input type="float" class="form-control col-sm-4" name="area_worst">
-                                <!-- <button type="button" class="btn btn-outline-info">Clear</button> -->
                             </div>     
                             <div class="form-group col-md-6">
-                                <button type="button" class="btn btn-primary btn-sm circle-button"><span class="fa fa-info"></span></button>
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Concavity (Worst)" data-content="'Worst' or largest (mean of the three largest values) - Severity of concave portions of the contour."><span class="fa fa-info"></span></button>
                                 <span class="col-sm-4">Concavity (Worst)</span>
                                 <input type="float" class="form-control col-sm-4" name="concavity_worst">
-                                <!-- <button type="button" class="btn btn-outline-info">Clear</button> -->
                             </div>
                             <div class="form-group col-md-6">
-                                <button type="button" class="btn btn-primary btn-sm circle-button"><span class="fa fa-info"></span></button>
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Concave Points (Worst)" data-content="'Worst' or largest (mean of the three largest values) - Number of concave portions of the contour."><span class="fa fa-info"></span></button>
                                 <span class="col-sm-4">Concave Points (Worst)</span>
                                 <input type="float" class="form-control col-sm-4" name="concave_points_worst">
-                                <!-- <button type="button" class="btn btn-outline-info">Clear</button> -->
                             </div>   
                             <div class="form-group col-md-6 m-t-40">
                                 <button type="submit" class="btn btn-secondary">Predict Cancer Type</button>
                             </div>
                         </div>
                     </form>
-
                     {% if diagnosis: %}
                         <p class="m-t-40">The patient's breast cancer type is likely to be :</p>
                         <h3> {{diagnosis}} </h3> 
@@ -139,10 +129,10 @@
             </section>
         </div>
         <!-- Footer -->
-        <footer class="footer py-4 bg-dark text-white-50 m-t-40">
+        <footer class="footer py-4 bg-dark m-t-40 text-center">
                 <!-- Copyright -->
                 <div class="container">© 2019 Copyright:
-                  <a href="https://mdbootstrap.com/education/bootstrap/"> UM Data Bootcamp</a>
+                  <a href=""> UM Data Bootcamp</a>
                 </div>
                 <!-- Copyright -->     
         </footer>
