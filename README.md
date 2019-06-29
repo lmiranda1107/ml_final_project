@@ -5,7 +5,7 @@ Having the ability to diagnose breast cancer in its early stages has been the fo
 The statistics state that “Uninsured women who were diagnosed with breast cancer were 60% more likely to die from the disease… Uninsured women were also nearly almost 3 times more likely to be diagnosed with a later stage of the disease, compared to women who had health insurance.”
 
 ### Purpose:
-We have created an app to be utilized as a suplemental diagnostic tool for users to detect the type of cancer (malignant or benign) a patient is likely to have based on results from a digitized image of a Fine Needle Aspiration Biopsy (FNA). The images from this test describe characteristics of the cell nuclei present in the image. The main idea around this tool is to construct a diagnosis system that could achieve diagnostic accuracy comparable to that of a surgical biospy.
+We have created an app to be utilized as a supplemental diagnostic tool for users to detect the type of cancer (malignant or benign) a patient is likely to have based on results from a digitized image of a Fine Needle Aspiration Biopsy (FNA). The images from this test describe characteristics of the cell nuclei present in the image. The main idea around this tool is to construct a diagnosis system that could achieve diagnostic accuracy comparable to that of a surgical biospy.
 
 This app will be shared with Health Centers, Research Institutes, and Cancer Centers that serve uninsured or underinsured demographics and do not have the resources to acquire this type of tool.
 
@@ -25,6 +25,7 @@ The following features were analyzed:
 
 While wrangling the data, we extracted the features from the list above that were not good indicators of either diagnosis and therefore would not assist in the predictive process of our machine learning model. 
 
-Below is our structure model that shows our overall process.
+Link to the Project's website:https://carmenates88.github.io/HFC_BreastCancer-github.io/
+
 ### Flow Chart:
 ![Untitled Diagram](https://user-images.githubusercontent.com/45187198/60310834-9b99da80-9922-11e9-9a1c-9fa5bec6ce50.png)
