@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel = "stylesheet" href="/static/css/ml_styles.css"/>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <title>Predict Breast Cancer | Prediction</title>
+    </head>
+
+    <style>
+        .circle-button {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .form-inline label {
+            justify-content: flex-start !important;
+        }
+        .m-t-40 {
+            margin-top: 40px;
+            color: white;
+        }
+    </style>
+    
+    <body>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Predict Breast Cancer</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> -->
+                <a class="nav-item nav-link" href="https://github.com/lmiranda1107/ml_final_project" target="_blank">Github Code</a>
+              </div>
+            </div>
+        </nav>
+
+        <div style="min-height: 800px;">
+            <section class="main-container">
+                <article class="index-intro">
+                    <div class="container">
+                        <div class='jumbotron'>
+                            <h1>Predict Breast Cancer App</h1>
+                            <p>This app is to be utilized as a suplemental diagnostic tool for  users to detect the type of cancer (malignant or benign) a patient is likely to have based on results from a digitized image of a Fine Needle Aspiration Biopsy (FNA). The images from this test describe characteristics of the cell nuclei present in the image. The main idea around this tool is to construct a diagnosis system that could achieve diagnostic accuracy comparable to that of a surgical biospy.</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="main-container">
+                <div class ="container">  
+                    <form class="form-inline" action="/start-over" method="GET">
+                        <input class="btn btn-primary" type="submit" value="Reset"> 
+                    </form>
+                    <br>
+                    <form class="form-inline" action="/get-patient-data" method="POST">
+                        <div class="form-row align-items-center">
+                            <div class="form-group col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Radius (Mean)" data-content="Mean of distances from center to points on the perimeter"><span class="fa fa-info"></span></button>
+                                <label class="col-sm-4">Radius (Mean)</label>
+                                <input type="float" class="form-control col-sm-4" name = "radius_mean">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="input-group input-group-sm mb-3">
+                                    <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Perimeter (Mean)" data-content="Measurement of the boundary that surrounds the tumor."><span class="fa fa-info"></span></button>
+                                </div>
+                                <span class="col-sm-4">Perimeter (Mean)</span>
+                                <input type="float" class="form-control col-sm-4" name ="perimeter_mean">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Area (Mean)" data-content="Extent or measurement of the surface of the tumor"><span class="fa fa-info"></span></button>
+                                <span class="col-sm-4">Area (Mean)</span>
+                                <input type="float" class="form-control col-sm-4" name="area_mean">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Concavity (Mean)" data-content="Severity of concave portions of the contour."><span class="fa fa-info"></span></button>   
+                                <span class="col-sm-4">Concavity (Mean)</span>
+                                <input type="float" class="form-control col-sm-4" name="concavity_mean">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Concave Points (Mean)" data-content="Number of concave portions of the contour."><span class="fa fa-info"></span></button>
+                                <span class="col-sm-4">Concave Points (Mean)</span>
+                                <input type="float" class="form-control col-sm-4" name="concave_points_mean">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Radius (Worst)" data-content="'Worst' or largest (mean of the three largest values) - Mean of distances from center to points on the perimeter"><span class="fa fa-info"></span></button>
+                                <span class="col-sm-4">Radius (Worst)</span>
+                                <input type="float" class="form-control col-sm-4" name="radius_worst">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Perimeter (Worst)" data-content="'Worst' or largest (mean of the three largest values) - Measurement of the boundary that surrounds the tumor"><span class="fa fa-info"></span></button>
+                                <span class="col-sm-4">Perimeter (Worst)</span>
+                                <input type="float" class="form-control col-sm-4" name="perimeter_worst">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Area (Worst)" data-content="'Worst' or largest (mean of the three largest values) - Extent or measurement of the surface of the tumor"><span class="fa fa-info"></span></button>
+                                <span class="col-sm-4">Area (Worst)</span>
+                                <input type="float" class="form-control col-sm-4" name="area_worst">
+                            </div>     
+                            <div class="form-group col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Concavity (Worst)" data-content="'Worst' or largest (mean of the three largest values) - Severity of concave portions of the contour."><span class="fa fa-info"></span></button>
+                                <span class="col-sm-4">Concavity (Worst)</span>
+                                <input type="float" class="form-control col-sm-4" name="concavity_worst">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm circle-button" data-toggle="popover" title="Concave Points (Worst)" data-content="'Worst' or largest (mean of the three largest values) - Number of concave portions of the contour."><span class="fa fa-info"></span></button>
+                                <span class="col-sm-4">Concave Points (Worst)</span>
+                                <input type="float" class="form-control col-sm-4" name="concave_points_worst">
+                            </div>   
+                            <div class="form-group col-md-6 m-t-40">
+                                <button type="submit" class="btn btn-secondary">Predict Cancer Type</button>
+                            </div>
+                        </div>
+                    </form>
+                    {% if diagnosis: %}
+                        <p class="m-t-40">The patient's breast cancer type is likely to be :</p>
+                        <h3> {{diagnosis}} </h3> 
+                    {% endif %}
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer class="footer py-4 bg-dark m-t-40 text-center">
+                <!-- Copyright -->
+                <div class="container">© 2019 Copyright:
+                  <a href=""> UM Data Bootcamp</a>
+                </div>
+                <!-- Copyright -->     
+        </footer>
+      <!-- Footer -->
+
+     
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <script>
+            $(function () {
+                $('[data-toggle="popover"]').popover()
+            })
+        </script>
+
+    </body>
+</html>
