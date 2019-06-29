@@ -215,6 +215,11 @@ img
 {
 	overflow: hidden;
 	margin-bottom: 15px;
+	text-align: left;
+	color: #a7a8a8;
+	font-family: Arial;
+	font-size: 14px;
+
 }
 
 
@@ -241,14 +246,20 @@ img
 {
 	border-left: 1px solid #d1d1d1;
 	border-right: 1px solid #d1d1d1;
-
 	overflow: hidden;
 	background-color: #f0f0f0;
+
+}
+
+.mcbox01 ul li:last-child
+{
+	border-bottom: none;
 }
 .mc01c ul
 {
 	margin: 0px 15px 0px 15px;
 	padding: 0px;
+	
 }
 .mc01c li
 {
@@ -261,17 +272,18 @@ img
 .mc01cc
 {
 	border-left: 1px solid #d1d1d1;
-	border-right: 1px solid #d1d1d1;
-	
+	border-right: 1px solid #d1d1d1;	
 	overflow: hidden;
 	background-color: #f0f0f0;
 }
+
 .mc01cc li
 {
 	list-style-type: square;
 	font-family: Arial;
 	font-size: 12px;
 	padding-top: 15px;
+
 }
 .mc01cc a
 {
@@ -401,15 +413,16 @@ img
 .mc0201
 {
 	font-family: 'Times New Roman', Times, serif;
-	font-size: 20px;
+	font-size: 25px;
 	color: rgb(14, 14, 212);
 	float: left;
 	padding-left: 100px;
+	image-orientation: initial;
 	}
 
 .text-center{
 	font-family: 'Times New Roman', Times, serif;
-	font-size: 20px;
+	font-size: 25px;
 	color: rgb(14, 14, 212);
 	float: center;
 
@@ -532,7 +545,54 @@ select
 .tex{
 	margin-left: 50px;
 	margin-right:40px;
+	font-family: Arial;
+	font-size: 20px;
+	color: black;
+	
+}
 
+.clearfix {
+	overflow: auto;
+  }
+  
+.img2 {
+	float: right;
+	padding-left: 10px;
+  }
+
+.imgDesc{
+	margin-left: 15px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.mctext{
+	font-size: 12px;
+	color: #494949;
+	margin-left: 30px;
+	margin-right: 25px;
+	line-height: 18px;
+	letter-spacing: -0.1px;
+	width: fit-content;
+	padding-top: 30px;
+}
+
+.textn{
+	color: blue;
+
+}
+.card-title{
+	
+	font-size: 20px;
+}
+
+.card-text{
+	
+	font-size: 14px;
+}
+
+.card-body{
+	font-family: 'Times New Roman', Times, serif;
 }
 
 /* footer */
